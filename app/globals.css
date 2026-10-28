@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* =====================================================
+   DESIGN SYSTEM — Inventario Inteligente
+   Identidad: El Balcón del Cielo
+   Paleta: Verde bosque + Terracota + Crema + Dorado
+   ===================================================== */
+
+:root {
+  /* Sidebar: verde bosque */
+  --sidebar-bg: #243c32;
+  --sidebar-hover: #304b3e;
+  --sidebar-active: #a95f43;
+  --sidebar-text: #d0d8cf;
+  --sidebar-text-active: #ffffff;
+  --sidebar-border: #3b5145;
+
+  /* Colores principales: terracota */
+  --color-primary: #b96f50;
+  --color-primary-hover: #a45d40;
+  --color-primary-light: #f7e9e1;
+  --color-primary-dark: #85462f;
+
+  /* Fondos: crema cálido */
+  --bg-page: #f7f4ec;
+  --bg-card: #fffdf8;
+  --bg-muted: #eee9de;
+
+  /* Textos */
+  --text-primary: #29382e;
+  --text-secondary: #667064;
+  --text-muted: #929487;
+  --text-placeholder: #b5b4a8;
+
+  /* Bordes */
+  --border-color: #e5dfd2;
+  --border-focus: #b96f50;
+
+  /* Estados */
+  --color-success: #477b58;
+  --color-success-bg: #eaf3e9;
+
+  --color-warning: #b98532;
+  --color-warning-bg: #fbf1d9;
+
+  --color-error: #b94d43;
+  --color-error-bg: #fae9e5;
+
+  --color-info: #537c83;
+  --color-info-bg: #e7f0ef;
+
+  /* Dorado de acento */
+  --color-gold: #d5ad62;
+  --color-gold-light: #f4e7c8;
+
+  /* Terracota complementario */
+  --color-terracotta: #b96f50;
+  --color-terracotta-light: #f2ddd2;
+
+  /* Sombras cálidas */
+  --shadow-sm: 0 1px 2px 0 rgb(55 43 29 / 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgb(55 43 29 / 0.08),
+    0 2px 4px -2px rgb(55 43 29 / 0.04);
+  --shadow-lg:
+    0 10px 15px -3px rgb(55 43 29 / 0.08),
+    0 4px 6px -4px rgb(55 43 29 / 0.04);
+  --shadow-xl:
+    0 20px 25px -5px rgb(55 43 29 / 0.10),
+    0 8px 10px -6px rgb(55 43 29 / 0.05);
+
+  /* Animaciones */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Dimensiones generales */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
+}
+
+/* =====================================================
+   RESET Y BASE
+   ===================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* =====================================================
+   ANIMACIONES GLOBALES
+   ===================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(185 111 80 / 0.4);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(185 111 80 / 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(185 111 80 / 0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.3s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.3s ease forwards;
+}
+
+/* =====================================================
+   SCROLLBAR PERSONALIZADO
+   ===================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d5cdbd;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b9ad99;
+}
+
+/* =====================================================
+   UTILIDADES ESPECÍFICAS DEL SISTEMA
+   ===================================================== */
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #eee9de 25%,
+    #e3dccd 50%,
+    #eee9de 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Glassmorphism para modales */
+.glass {
+  background: rgb(255 253 248 / 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Focus visible global */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Selección de texto */
+::selection {
+  background-color: #ead0c2;
+  color: #633e2f;
+}
+
+/* =====================================================
+   UTILIDADES DE MARCA
+   ===================================================== */
+
+/* Botones principales */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transition:
+    background-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Acentos de la marca */
+.text-terracotta {
+  color: var(--color-terracotta);
+}
+
+.text-forest {
+  color: var(--sidebar-bg);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+/* Paneles con identidad visual */
+.panel-forest {
+  background-color: var(--sidebar-bg);
+  color: #ffffff;
+}
+
+.panel-cream {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+/* Transición uniforme para elementos interactivos */
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
